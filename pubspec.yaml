@@ -7,6 +7,8 @@ environment:
   sdk: ^3.11.3
 
 dependencies:
+  dartz: ^0.10.1
+  dio: ^5.9.2
   equatable: ^2.0.8
   flutter:
     sdk: flutter
