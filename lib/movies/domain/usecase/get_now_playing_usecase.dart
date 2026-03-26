@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:movies_app/core/error/failure.dart' show Failure;
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/domain/repository/base_movies_repository.dart';
 
@@ -6,7 +8,7 @@ class GetNowPlayingUsecase {
 
   final BaseMoviesRepository baseMoviesRepository;
 
-  Future<List<Movie>> execute() async {
+  Future<Either<Failure, List<Movie>>> execute() async {
     return await baseMoviesRepository.getNowPlayingMovies();
   }
 }
