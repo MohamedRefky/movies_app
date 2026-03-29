@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/utils/api_constance.dart';
 import 'package:movies_app/core/utils/enumes.dart';
-import 'package:movies_app/movies/presentation/controller/movie_bloc.dart';
-import 'package:movies_app/movies/presentation/controller/movie_state.dart';
-import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
+import 'package:movies_app/movies/presentation/controller/movie/movie_bloc.dart';
+import 'package:movies_app/movies/presentation/controller/movie/movie_state.dart';
+import 'package:movies_app/movies/presentation/screens/movie_detail_screen.dart';
+
 import 'package:shimmer/shimmer.dart';
 
 class PopulerComponent extends StatelessWidget {
@@ -47,7 +48,8 @@ class PopulerComponent extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (_) => MovieDetailsScreen(movie: movie),
+                              builder: (context) =>
+                                  MovieDetailScreen(id: movie.id),
                             ),
                           );
                         },
