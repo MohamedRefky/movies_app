@@ -28,7 +28,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     GetNowPlayingMoviesEvent event,
     Emitter<MovieState> emit,
   ) async {
-    final result = await getNowPlayingUsecase.call(NoParameters());
+    final result = await getNowPlayingUsecase(NoParameters());
     result.fold(
       (failure) => emit(
         state.copyWith(
@@ -51,7 +51,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     GetPopularMoviesEvent event,
     Emitter<MovieState> emit,
   ) async {
-    final result = await getPopularUsecase.call(NoParameters());
+    final result = await getPopularUsecase(NoParameters());
 
     result.fold(
       (failure) => emit(
@@ -75,7 +75,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     GetTopRatedMoviesEvent event,
     Emitter<MovieState> emit,
   ) async {
-    final result = await getTopRatedUsecase.call(NoParameters());
+    final result = await getTopRatedUsecase(NoParameters());
 
     result.fold(
       (failure) => emit(

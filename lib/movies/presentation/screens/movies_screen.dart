@@ -5,8 +5,8 @@ import 'package:movies_app/movies/presentation/components/custom_container.dart'
 import 'package:movies_app/movies/presentation/components/now_playing_component.dart';
 import 'package:movies_app/movies/presentation/components/populer_component.dart';
 import 'package:movies_app/movies/presentation/components/top_rated_component.dart';
-import 'package:movies_app/movies/presentation/controller/movie_bloc.dart';
-import 'package:movies_app/movies/presentation/controller/movie_event.dart';
+import 'package:movies_app/movies/presentation/controller/movie/movie_bloc.dart';
+import 'package:movies_app/movies/presentation/controller/movie/movie_event.dart';
 
 class MainMoviesScreen extends StatelessWidget {
   const MainMoviesScreen({super.key});
@@ -19,7 +19,6 @@ class MainMoviesScreen extends StatelessWidget {
         ..add(GetPopularMoviesEvent())
         ..add(GetTopRatedMoviesEvent()),
       child: Scaffold(
-        backgroundColor: Colors.grey.shade900,
         body: SingleChildScrollView(
           key: const Key('movieScrollView'),
           child: Column(
