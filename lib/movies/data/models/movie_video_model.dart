@@ -6,6 +6,7 @@ class MovieVideoModel extends MovieVideo {
     required super.site,
     required super.type,
     required super.official,
+    
   });
 
   factory MovieVideoModel.fromJson(Map<String, dynamic> json) {
