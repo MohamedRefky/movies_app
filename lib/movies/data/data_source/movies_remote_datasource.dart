@@ -69,7 +69,6 @@ class MoviesRemoteDatasource implements BaseMoviesRemoteDatasource {
   }
 
   @override
-  @override
   Future<List<MovieVideoModel>> getMovieVideos(MovieId parameter) async {
     final response = await dio.get(ApiConstance.movieVideos(parameter.movieId));
     if (response.statusCode == 200) {

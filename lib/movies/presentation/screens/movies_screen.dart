@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/services/services_locator.dart';
-import 'package:movies_app/movies/presentation/components/custom_container.dart';
-import 'package:movies_app/movies/presentation/components/now_playing_component.dart';
-import 'package:movies_app/movies/presentation/components/populer_component.dart';
-import 'package:movies_app/movies/presentation/components/top_rated_component.dart';
+import 'package:movies_app/movies/presentation/components/movie/custom_container.dart';
+import 'package:movies_app/movies/presentation/components/movie/now_playing_component.dart';
+import 'package:movies_app/movies/presentation/components/movie/populer_component.dart';
+import 'package:movies_app/movies/presentation/components/movie/top_rated_component.dart';
 import 'package:movies_app/movies/presentation/controller/movie/movie_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movie/movie_event.dart';
 
