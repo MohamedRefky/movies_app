@@ -22,7 +22,7 @@ class CustomContainer extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: onTap(),
+            onTap: () => onTap(),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(

@@ -33,10 +33,8 @@ class MovieDetailContent extends StatelessWidget {
         switch (state.movieDetailsState) {
           case RequestState.loading:
             return const Center(child: CircularProgressIndicator());
-
           case RequestState.error:
             return Center(child: Text(state.movieDetailsMessage));
-
           case RequestState.loaded:
             return CustomScrollView(
               key: Key('movieDetailScrollView'),

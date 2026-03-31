@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class MovieEvent extends Equatable {
+  class MovieEvent extends Equatable {
+    /// Todo abstract
   @override
   List<Object?> get props => [];
 }

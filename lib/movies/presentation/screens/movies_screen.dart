@@ -7,6 +7,9 @@ import 'package:movies_app/movies/presentation/components/movie/populer_componen
 import 'package:movies_app/movies/presentation/components/movie/top_rated_component.dart';
 import 'package:movies_app/movies/presentation/controller/movie/movie_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movie/movie_event.dart';
+import 'package:movies_app/movies/presentation/screens/popular_movie_screen.dart';
+import 'package:movies_app/movies/presentation/screens/top_rated_movie_screen.dart';
+
 
 class MainMoviesScreen extends StatelessWidget {
   const MainMoviesScreen({super.key});
@@ -25,9 +28,29 @@ class MainMoviesScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               NowPlayingComponent(),
-              CustomContainer(titel: "Popular", onTap: () {}),
+              CustomContainer(
+                titel: "Popular",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PopularMovieScreen(),
+                    ),
+                  );
+                },
+              ),
               PopulerComponent(),
-              CustomContainer(titel: "Top Rated", onTap: () {}),
+              CustomContainer(
+                titel: "Top Rated",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TopRatedMovieScreen(),
+                    ),
+                  );
+                },
+              ),
               TopRatedComponent(),
               const SizedBox(height: 50.0),
             ],
