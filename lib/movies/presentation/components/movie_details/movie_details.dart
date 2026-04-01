@@ -12,8 +12,10 @@ import 'package:movies_app/movies/presentation/screens/video_player_screen.dart'
 
 class MovieDetails extends StatelessWidget {
   const MovieDetails({super.key});
+
   @override
   Widget build(BuildContext context) {
+    bool isFavorite = false;
     return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
       builder: (context, state) {
         final movie = state.movieDetails!;
@@ -107,7 +109,9 @@ class MovieDetails extends StatelessWidget {
                               ),
                               const SizedBox(width: 4.0),
                               Text(
-                                (movie.voteAverage ?? 0 / 2).toStringAsFixed(1),
+                                ((movie.voteAverage ?? 0) / 2).toStringAsFixed(
+                                  1,
+                                ),
                                 style: const TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w500,
@@ -160,6 +164,22 @@ class MovieDetails extends StatelessWidget {
                                     ],
                                   ),
                                 ),
+                              SizedBox(width: 16.0),
+                              GestureDetector(
+                                onTap: () {
+                                  isFavorite = !isFavorite;
+                                  (context as Element).markNeedsBuild();
+                                },
+                                child: Icon(
+                                  isFavorite
+                                      ? Icons.bookmark
+                                      : Icons.bookmark_border,
+                                  color: isFavorite
+                                      ? Colors.amber
+                                      : Colors.white,
+                                  size: 28,
+                                ),
+                              ),
                             ],
                           ),
                           const SizedBox(height: 15.0),

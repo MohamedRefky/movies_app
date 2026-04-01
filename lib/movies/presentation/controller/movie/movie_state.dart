@@ -13,6 +13,7 @@ class MovieState extends Equatable {
     this.topRatedMovies = const [],
     this.topRatedState = RequestState.loading,
     this.topRatedMessage = '',
+    this.isFavorite,
   });
   final List<Movie> nowPlayingMovies;
   final RequestState nawPlayingState;
@@ -23,7 +24,9 @@ class MovieState extends Equatable {
   final List<Movie> topRatedMovies;
   final RequestState topRatedState;
   final String topRatedMessage;
-  
+
+  final bool? isFavorite;
+
   MovieState copyWith({
     List<Movie>? nowPlayingMovies,
     RequestState? nawPlayingState,
@@ -34,6 +37,7 @@ class MovieState extends Equatable {
     List<Movie>? topRatedMovies,
     RequestState? topRatedState,
     String? topRatedMessage,
+    bool? isFavorite,
   }) {
     return MovieState(
       nowPlayingMovies: nowPlayingMovies ?? this.nowPlayingMovies,
@@ -45,6 +49,7 @@ class MovieState extends Equatable {
       topRatedMovies: topRatedMovies ?? this.topRatedMovies,
       topRatedState: topRatedState ?? this.topRatedState,
       topRatedMessage: topRatedMessage ?? this.topRatedMessage,
+      isFavorite: isFavorite,
     );
   }
 
@@ -59,5 +64,6 @@ class MovieState extends Equatable {
     topRatedMovies,
     topRatedState,
     topRatedMessage,
+    isFavorite,
   ];
 }

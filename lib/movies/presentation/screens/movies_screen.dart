@@ -8,11 +8,9 @@ import 'package:movies_app/movies/presentation/components/movie/top_rated_compon
 import 'package:movies_app/movies/presentation/controller/movie/movie_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movie/movie_event.dart';
 import 'package:movies_app/movies/presentation/screens/popular_movie_screen.dart';
-import 'package:movies_app/movies/presentation/screens/top_rated_movie_screen.dart';
 
-
-class MainMoviesScreen extends StatelessWidget {
-  const MainMoviesScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,36 +22,39 @@ class MainMoviesScreen extends StatelessWidget {
       child: Scaffold(
         body: SingleChildScrollView(
           key: const Key('movieScrollView'),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              NowPlayingComponent(),
-              CustomContainer(
-                titel: "Popular",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PopularMovieScreen(),
-                    ),
-                  );
-                },
-              ),
-              PopulerComponent(),
-              CustomContainer(
-                titel: "Top Rated",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TopRatedMovieScreen(),
-                    ),
-                  );
-                },
-              ),
-              TopRatedComponent(),
-              const SizedBox(height: 50.0),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                NowPlayingComponent(),
+                CustomContainer(
+                  titel: "Popular",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PopularMovieScreen(),
+                      ),
+                    );
+                  },
+                ),
+                PopularComponent(),
+                CustomContainer(
+                  titel: "Top Rated",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TopRatedComponent(),
+                      ),
+                    );
+                  },
+                ),
+                TopRatedComponent(),
+              ],
+            ),
           ),
         ),
       ),

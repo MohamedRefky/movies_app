@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:movies_app/movies/presentation/screens/main_screen.dart';
 import 'core/services/services_locator.dart';
-import 'movies/presentation/screens/movies_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ServicesLocator().init();
+  await Hive.initFlutter();
+  await Hive.openBox<int>('favoritesBox');
   runApp(const MainApp());
 }
 
@@ -18,9 +20,10 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Movies App',
       theme: ThemeData.dark().copyWith(
+        splashFactory: NoSplash.splashFactory,
         scaffoldBackgroundColor: Colors.grey.shade900,
       ),
-      home: MainMoviesScreen(),
+      home: MainScreeen(),
     );
   }
 }

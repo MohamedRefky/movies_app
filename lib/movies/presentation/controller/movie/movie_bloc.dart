@@ -1,12 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:movies_app/core/usecase/base_usecase.dart';
 import 'package:movies_app/core/utils/enumes.dart';
-import 'package:movies_app/movies/domain/usecase/get_now_playing_usecase.dart';
-import 'package:movies_app/movies/domain/usecase/get_popular_usecase.dart';
-import 'package:movies_app/movies/domain/usecase/get_top_rated_usecase.dart';
-
+import 'package:movies_app/movies/domain/repository/base_movies_repository.dart';
+import 'package:movies_app/movies/domain/usecase/movie/get_now_playing_usecase.dart';
+import 'package:movies_app/movies/domain/usecase/movie/get_popular_usecase.dart';
+import 'package:movies_app/movies/domain/usecase/movie/get_top_rated_usecase.dart';
 import 'movie_event.dart';
 import 'movie_state.dart';
 
@@ -14,7 +13,10 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   final GetNowPlayingUsecase getNowPlayingUsecase;
   final GetPopularUsecase getPopularUsecase;
   final GetTopRatedUsecase getTopRatedUsecase;
+  final BaseMoviesRepository repository;
+  
   MovieBloc(
+    this.repository,
     this.getNowPlayingUsecase,
     this.getPopularUsecase,
     this.getTopRatedUsecase,
@@ -24,7 +26,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     on<GetTopRatedMoviesEvent>(_getTopRatedMovies);
   }
 
-  FutureOr<void> _getNowPlayingMovies(
+  Future<void> _getNowPlayingMovies(
     GetNowPlayingMoviesEvent event,
     Emitter<MovieState> emit,
   ) async {
@@ -47,7 +49,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     );
   }
 
-  FutureOr<void> _getPopularMovies(
+  Future<void> _getPopularMovies(
     GetPopularMoviesEvent event,
     Emitter<MovieState> emit,
   ) async {
@@ -71,7 +73,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     );
   }
 
-  FutureOr<void> _getTopRatedMovies(
+  Future<void> _getTopRatedMovies(
     GetTopRatedMoviesEvent event,
     Emitter<MovieState> emit,
   ) async {
@@ -94,4 +96,18 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       },
     );
   }
+  Future<void> addToFavorites(int movieId) async {
+  final result = await repository.addToFavoritesById(movieId);
+  result.fold((l) => null, (r) => null);
+}
+
+Future<void> removeFromFavorites(int movieId) async {
+  final result = await repository.removeFromFavoritesById(movieId);
+  result.fold((l) => null, (r) => null);
+}
+
+Future<void> checkIfFavorite(int movieId) async {
+  final result = await repository.isMovieFavorite(movieId);
+  result.fold((l) => null, (r) => emit(state.copyWith(isFavorite: r)));
+}
 }

@@ -7,9 +7,9 @@ import 'package:movies_app/core/utils/enumes.dart';
 import 'package:movies_app/movies/domain/entities/movie_details.dart';
 import 'package:movies_app/movies/domain/entities/movie_video.dart';
 import 'package:movies_app/movies/domain/entities/recommendations.dart';
-import 'package:movies_app/movies/domain/usecase/get_movie_details_usease.dart';
-import 'package:movies_app/movies/domain/usecase/get_movie_videos_usease.dart';
-import 'package:movies_app/movies/domain/usecase/get_recommendations_usecase.dart';
+import 'package:movies_app/movies/domain/usecase/details/get_movie_details_usease.dart';
+import 'package:movies_app/movies/domain/usecase/details/get_recommendations_usecase.dart';
+import 'package:movies_app/movies/domain/usecase/video/get_movie_videos_usease.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 part 'movie_details_event.dart';
@@ -53,7 +53,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
     Emitter<MovieDetailsState> emit,
   ) async {
     final result = await getMovieRecommendationsUsease(
-      RecommendationsParameter(event.movieId, id: event.movieId),
+      RecommendationsParameter(event.movieId),
     );
     result.fold(
       (l) => emit(
