@@ -5,6 +5,7 @@ import 'package:movies_app/movies/presentation/components/movie/custom_container
 import 'package:movies_app/movies/presentation/components/movie/now_playing_component.dart';
 import 'package:movies_app/movies/presentation/components/movie/populer_component.dart';
 import 'package:movies_app/movies/presentation/components/movie/top_rated_component.dart';
+import 'package:movies_app/movies/presentation/controller/favorites/favorites_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movie/movie_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movie/movie_event.dart';
 import 'package:movies_app/movies/presentation/screens/popular_movie_screen.dart';
@@ -14,11 +15,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<MovieBloc>()
-        ..add(GetNowPlayingMoviesEvent())
-        ..add(GetPopularMoviesEvent())
-        ..add(GetTopRatedMoviesEvent()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<MovieBloc>()
+            ..add(GetNowPlayingMoviesEvent())
+            ..add(GetPopularMoviesEvent())
+            ..add(GetTopRatedMoviesEvent()),
+        ),
+        BlocProvider(
+          create: (context) => sl<FavoritesBloc>()..add(LoadFavoritesEvent()),
+        ),
+      ],
       child: Scaffold(
         body: SingleChildScrollView(
           key: const Key('movieScrollView'),

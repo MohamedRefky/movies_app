@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/movies/presentation/screens/bookmark_screen.dart';
-import 'package:movies_app/movies/presentation/screens/movies_screen.dart';
+import 'package:movies_app/movies/presentation/screens/home_screen.dart' show HomeScreen;
 import 'package:movies_app/movies/presentation/screens/search_screeen.dart';
 
 class MainScreeen extends StatefulWidget {
